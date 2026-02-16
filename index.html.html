@@ -384,23 +384,23 @@
         <div class="video-grid-vertical">
             <div class="video-item">
                 <div class="video-wrapper-vertical">
-                    <iframe src="https://player.vimeo.com/video/1165209636?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0"
-                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-                            allowfullscreen></iframe>
-                </div>
-                <div class="video-info">
-                    <span class="video-title">Daydreamin' in Cambridge</span>
-                </div>
-            </div>
-
-            <div class="video-item">
-                <div class="video-wrapper-vertical">
                     <iframe src="https://player.vimeo.com/video/1165238976?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0"
                             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
                             allowfullscreen></iframe>
                 </div>
                 <div class="video-info">
                     <span class="video-title">A Day at The Howe Mansion</span>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-wrapper-vertical">
+                    <iframe src="https://player.vimeo.com/video/1165209636?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0"
+                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                            allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <span class="video-title">Daydreamin' in Cambridge</span>
                 </div>
             </div>
 
@@ -441,11 +441,7 @@
         <p class="footer-brand">Redwards Media &mdash; Greater Boston</p>
     </section>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
+                if (entry.isIntersec
