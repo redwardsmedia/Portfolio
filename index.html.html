@@ -6,221 +6,189 @@
     <title>Rohan Edwards — Video Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after {
+        :root {
+            --bg: #0a0a0a;
+            --card-bg: #111111;
+            --warm-white: #f5f0eb;
+            --warm-cream: #d4c5b4;
+            --gold: #c9a96e;
+            --gold-dim: rgba(201, 169, 110, 0.3);
+            --text-secondary: #8a8078;
+        }
+
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --bg-deep: #0a0a0a;
-            --bg-card: #111111;
-            --warm-white: #f5f0eb;
-            --warm-cream: #d4c5b4;
-            --warm-gold: #c9a96e;
-            --warm-gold-dim: rgba(201, 169, 110, 0.3);
-            --text-secondary: #8a8078;
-            --font-display: 'Cormorant Garamond', Georgia, serif;
-            --font-body: 'DM Sans', -apple-system, sans-serif;
-        }
-
-        html { scroll-behavior: smooth; }
-
         body {
-            background-color: var(--bg-deep);
+            background-color: var(--bg);
             color: var(--warm-white);
-            font-family: var(--font-body);
+            font-family: 'DM Sans', sans-serif;
             font-weight: 300;
-            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
-        /* Clean dark background, no overlay */
+        /* Fade-up animation */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-        /* ─── Hero ─── */
+        .fade-up {
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .fade-up-1 { animation-delay: 0.1s; }
+        .fade-up-2 { animation-delay: 0.3s; }
+        .fade-up-3 { animation-delay: 0.5s; }
+        .fade-up-4 { animation-delay: 0.7s; }
+
+        /* Hero */
         .hero {
-            min-height: 60vh;
+            height: 60vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 2rem;
-            position: relative;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 10%; right: 10%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--warm-gold-dim), transparent);
         }
 
         .hero-eyebrow {
-            font-family: var(--font-body);
-            font-size: 0.7rem;
-            font-weight: 500;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: var(--warm-gold);
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeUp 1s ease 0.3s forwards;
-        }
-
-        .hero-name {
-            font-family: var(--font-display);
-            font-size: clamp(3rem, 8vw, 7rem);
+            font-family: 'DM Sans', sans-serif;
             font-weight: 400;
-            line-height: 1.05;
-            color: var(--warm-white);
-            letter-spacing: -0.02em;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
             margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeUp 1s ease 0.5s forwards;
         }
 
-        .hero-name em {
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: var(--warm-white);
+            line-height: 1.1;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h1 em {
             font-style: italic;
-            color: var(--warm-gold);
+            color: var(--gold);
         }
 
         .hero-tagline {
-            font-family: var(--font-body);
-            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-            font-weight: 300;
+            font-size: 0.95rem;
             color: var(--text-secondary);
-            max-width: 520px;
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: fadeUp 1s ease 0.7s forwards;
+            max-width: 420px;
+            line-height: 1.6;
         }
 
-        .scroll-indicator {
-            opacity: 0;
-            animation: fadeUp 1s ease 1.2s forwards;
+        /* Divider */
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--gold-dim);
+            margin: 0 auto;
         }
 
-        .scroll-indicator svg {
-            width: 20px; height: 20px;
-            stroke: var(--warm-gold-dim);
-            animation: gentleBounce 2.5s ease-in-out infinite;
-        }
-
-        /* ─── Work Section ─── */
-        .work-section {
-            padding: 3rem 2rem 4rem;
-            max-width: 1300px;
+        /* Section */
+        .section {
+            padding: 3rem 2rem;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-label {
-            font-family: var(--font-body);
-            font-size: 0.65rem;
-            font-weight: 500;
-            letter-spacing: 0.4em;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 400;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--warm-gold);
-            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
             text-align: center;
         }
 
-        /* ─── Vertical Video Grid (9:16) ─── */
-        .video-grid-vertical {
+        /* Vertical Video Grid */
+        .video-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.75rem;
+            gap: 1.5rem;
         }
 
-        .video-item {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 0.8s ease forwards;
+        .video-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .video-item:nth-child(1) { animation-delay: 0.1s; }
-        .video-item:nth-child(2) { animation-delay: 0.2s; }
-        .video-item:nth-child(3) { animation-delay: 0.3s; }
-        .video-item:nth-child(4) { animation-delay: 0.4s; }
+        .video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
 
         .video-wrapper-vertical {
             position: relative;
             padding-bottom: 177.78%; /* 9:16 */
             height: 0;
             overflow: hidden;
-            border-radius: 6px;
-            background: var(--bg-card);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
-            transition: box-shadow 0.4s ease, transform 0.4s ease;
         }
 
-        .video-item:hover .video-wrapper-vertical,
-        .video-item:hover .video-wrapper-horizontal {
-            box-shadow: 0 16px 50px rgba(0,0,0,0.6), 0 0 0 1px var(--warm-gold-dim);
-            transform: translateY(-4px);
-        }
-
-        .video-wrapper-vertical iframe,
-        .video-wrapper-horizontal iframe {
+        .video-wrapper-vertical iframe {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            border: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         .video-info {
-            margin-top: 1rem;
-            padding: 0 0.15rem;
+            padding: 1rem;
+            text-align: center;
         }
 
         .video-title {
-            font-family: var(--font-display);
-            font-size: 1.15rem;
-            font-weight: 500;
-            color: var(--warm-cream);
-            display: block;
-            margin-bottom: 0.2rem;
-        }
-
-        .video-category {
-            font-family: var(--font-body);
-            font-size: 0.6rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
             font-weight: 400;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
+            color: var(--warm-cream);
         }
 
-        /* ─── Featured Horizontal Video (16:9) ─── */
-        .featured-section {
-            margin-top: 4rem;
-            padding-top: 4rem;
-            position: relative;
+        /* Featured Video Grid (two horizontal videos side by side) */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .featured-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 20%; right: 20%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--warm-gold-dim), transparent);
+        .featured-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .featured-label {
-            font-family: var(--font-body);
-            font-size: 0.65rem;
-            font-weight: 500;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            color: var(--warm-gold);
-            margin-bottom: 2.5rem;
-            text-align: center;
+        .featured-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
         }
 
         .video-wrapper-horizontal {
@@ -228,136 +196,94 @@
             padding-bottom: 56.25%; /* 16:9 */
             height: 0;
             overflow: hidden;
-            border-radius: 6px;
-            background: var(--bg-card);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            max-width: 960px;
-            margin: 0 auto;
-            transition: box-shadow 0.4s ease, transform 0.4s ease;
         }
 
-        .featured-info {
-            max-width: 960px;
-            margin: 1.2rem auto 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            padding: 0 0.25rem;
-        }
-
-        /* ─── Footer ─── */
-        .footer {
-            padding: 6rem 2rem;
-            text-align: center;
-            position: relative;
-            margin-top: 2rem;
-        }
-
-        .footer::before {
-            content: '';
+        .video-wrapper-horizontal iframe {
             position: absolute;
             top: 0;
-            left: 10%; right: 10%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--warm-gold-dim), transparent);
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
-        .footer-heading {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 5vw, 3.5rem);
+        /* Footer CTA */
+        .footer-cta {
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .footer-cta h2 {
+            font-family: 'Cormorant Garamond', serif;
             font-weight: 400;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
             color: var(--warm-white);
             margin-bottom: 1rem;
         }
 
-        .footer-heading em {
+        .footer-cta h2 em {
             font-style: italic;
-            color: var(--warm-gold);
+            color: var(--gold);
         }
 
-        .footer-sub {
+        .footer-cta p {
+            color: var(--text-secondary);
             font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
-        .contact-link {
-            display: inline-block;
-            font-family: var(--font-body);
-            font-size: 0.7rem;
-            font-weight: 500;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--warm-gold);
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--warm-cream);
             text-decoration: none;
-            padding: 0.9rem 2.5rem;
-            border: 1px solid var(--warm-gold-dim);
-            border-radius: 2px;
-            transition: all 0.4s ease;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
         }
 
-        .contact-link:hover {
-            background: var(--warm-gold);
-            color: var(--bg-deep);
-            border-color: var(--warm-gold);
+        .footer-links a:hover {
+            color: var(--gold);
         }
 
-        .footer-brand {
-            margin-top: 4rem;
-            font-family: var(--font-body);
-            font-size: 0.65rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
+        .footer-bottom {
+            text-align: center;
+            padding: 2rem;
             color: var(--text-secondary);
-            opacity: 0.5;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
-        /* ─── Animations ─── */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes gentleBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
-        }
-
-        /* ─── Responsive ─── */
-        @media (max-width: 1024px) {
-            .video-grid-vertical {
+        /* Responsive */
+        @media (max-width: 900px) {
+            .video-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
+            }
+            .featured-grid {
+                grid-template-columns: 1fr;
+                max-width: 600px;
             }
         }
 
         @media (max-width: 600px) {
-            .video-grid-vertical {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
+            .video-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
             }
-
-            .work-section {
-                padding: 4rem 1rem 3rem;
+            .featured-grid {
+                grid-template-columns: 1fr;
+                max-width: 100%;
             }
-
-            .video-title { font-size: 1rem; }
-            .video-category { font-size: 0.55rem; }
-
-            .featured-section { margin-top: 3rem; padding-top: 3rem; }
-
-            .featured-info {
-                flex-direction: column;
-                gap: 0.3rem;
-            }
-
-            .footer { padding: 4rem 1.25rem; }
-        }
-
-        @media (max-width: 400px) {
-            .video-grid-vertical {
-                grid-template-columns: 1fr 1fr;
-                gap: 0.75rem;
+            .hero {
+                height: 50vh;
             }
         }
     </style>
@@ -366,23 +292,19 @@
 
     <!-- Hero -->
     <section class="hero">
-        <p class="hero-eyebrow">Redwards Media</p>
-        <h1 class="hero-name">Rohan <em>Edwards</em></h1>
-        <p class="hero-tagline">Boston-based cinematographer and creative specializing in short form storytelling.</p>
-        <div class="scroll-indicator">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                <path d="M12 5v14M5 12l7 7 7-7"/>
-            </svg>
-        </div>
+        <p class="hero-eyebrow fade-up fade-up-1">Redwards Media</p>
+        <h1 class="fade-up fade-up-2">Rohan <em>Edwards</em></h1>
+        <p class="hero-tagline fade-up fade-up-3">Boston-based cinematographer and creative specializing in short form storytelling.</p>
     </section>
 
-    <!-- Work -->
-    <section class="work-section">
-        <p class="section-label">Selected Work</p>
+    <div class="divider"></div>
 
-        <!-- 3 Vertical Reels -->
-        <div class="video-grid-vertical">
-            <div class="video-item">
+    <!-- Vertical Videos -->
+    <section class="section">
+        <p class="section-label fade-up fade-up-3">Selected Work</p>
+        <div class="video-grid">
+
+            <div class="video-card fade-up fade-up-2">
                 <div class="video-wrapper-vertical">
                     <iframe src="https://player.vimeo.com/video/1165238976?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0"
                             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
@@ -393,7 +315,7 @@
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-card fade-up fade-up-3">
                 <div class="video-wrapper-vertical">
                     <iframe src="https://player.vimeo.com/video/1165209636?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0"
                             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
@@ -404,7 +326,7 @@
                 </div>
             </div>
 
-            <div class="video-item">
+            <div class="video-card fade-up fade-up-4">
                 <div class="video-wrapper-vertical">
                     <iframe src="https://player.vimeo.com/video/1165210256?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0"
                             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
@@ -414,34 +336,57 @@
                     <span class="video-title">Exploring Rockport</span>
                 </div>
             </div>
-        </div>
 
-        <!-- Featured Horizontal Video -->
-        <div class="featured-section">
-            <p class="featured-label">Featured</p>
-            <div class="video-item">
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Featured Horizontal Videos -->
+    <section class="section">
+        <p class="section-label fade-up fade-up-3">Featured</p>
+        <div class="featured-grid">
+
+            <div class="featured-card fade-up fade-up-2">
+                <div class="video-wrapper-horizontal">
+                    <iframe src="https://player.vimeo.com/video/1165557833?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0"
+                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                            allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <span class="video-title">FPV Tour of Ireland</span>
+                </div>
+            </div>
+
+            <div class="featured-card fade-up fade-up-3">
                 <div class="video-wrapper-horizontal">
                     <iframe src="https://player.vimeo.com/video/1165210436?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0"
                             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
                             allowfullscreen></iframe>
                 </div>
-                <div class="featured-info">
+                <div class="video-info">
                     <span class="video-title">The Flatley Collection</span>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <!-- Footer -->
-    <section class="footer">
-        <h2 class="footer-heading">Let's <em>work</em> together.</h2>
-        <p class="footer-sub">Every video is built around you.</p>
-        <a href="mailto:rohan@redwardsmedia.com" class="contact-link">Get in Touch</a>
-        <a href="https://instagram.com/redwardsmedia" target="_blank" rel="noopener noreferrer" class="contact-link" style="margin-left: 1rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 0.5rem;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@redwardsmedia</a>
-        <p class="footer-brand">Redwards Media &mdash; Greater Boston</p>
+    <div class="divider"></div>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+        <h2 class="fade-up fade-up-1">Let's <em>work</em> together.</h2>
+        <p class="fade-up fade-up-2">Every video is built around you.</p>
+        <div class="footer-links fade-up fade-up-3">
+            <a href="mailto:rohan@redwardsmedia.com">Get in Touch</a>
+            <a href="https://instagram.com/redwardsmedia" target="_blank" rel="noopener">@redwardsmedia</a>
+        </div>
     </section>
 
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersec
+    <div class="footer-bottom">
+        Redwards Media — Greater Boston
+    </div>
+
+</body>
+</html>
